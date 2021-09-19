@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //change this variable to use your own mongo db uri
-var mongoDB = 'mongodb+srv://Ajith:derp@cluster0.qh9s1.mongodb.net/test';
+var mongoDB = 'mongodb://localhost:27017/test';
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

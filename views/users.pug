@@ -7,7 +7,7 @@ block content
         li 
         form(action='/userDetails', method='POST')
             input(type="hidden", name="id", value=item.id)
-            |Name: #{item.first_name + ' '+ item.last_name} Email: #{item.email}
+            |Name: #{item.fullname} Email: #{item.email}
             input(class='small', type='submit', value='Details', )
       else
         li There are no users

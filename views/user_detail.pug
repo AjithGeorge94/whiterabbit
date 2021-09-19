@@ -2,7 +2,7 @@ extends layout
 block content
     a(class='button' href='/') Home
     ul
-      li Name: #{user_data.first_name} #{user_data.last_name} 
+      li Name: #{user_data.fullname}
       li Email:  #{user_data.email} 
       li Introduction: #{user_data.introduction} 
       li Phone:  #{user_data.phone} 

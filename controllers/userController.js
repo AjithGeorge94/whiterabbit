@@ -49,7 +49,6 @@ exports.user_create = function(req, res)
     User.findById(req.body.id)
         .then(function (user_details) {
             if(user_details){
-                console.log(user_details)
                 res.status(200)
                 .render('user_detail', { user_data: user_details });
             }
@@ -66,3 +65,22 @@ exports.user_create = function(req, res)
             });      
         });
 };
+
+//----------------------------User Page-----------------------//
+/* This function is used to load user details of the requested user.*/
+exports.user_data_get = function(req, res) {
+    console.log('here')
+    User.findById(req.params.id)
+    .then(function(user_details){
+         res.status(200).json({
+             success:true,
+             data:user_details
+             });
+             console.log('here')
+         }).catch((err)=>{
+             res.status(500).json({
+              success:false,
+              message:err,
+             }); 
+            }); 
+ };

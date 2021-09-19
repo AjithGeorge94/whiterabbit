@@ -20,5 +20,8 @@ router.post('/create', emailValidator, user_controller.user_create);
 // Post request for details of particular user.
 router.post('/userDetails', user_controller.user_details_get);
 
+// Post request for details of particular user.
+router.get('/userdetes/:id', user_controller.user_data_get);
+
 
 module.exports = router;
