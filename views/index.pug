@@ -1,41 +1,35 @@
 extends layout
 block content
-  //-
-    script.
-      function validateForm() {
-        var first_name = document.forms["myForm"]["first_name"].value;
-        var last_name = document.forms["myForm"]["last_name"].value;
-        var email = document.forms["myForm"]["email"].value;
-        var phone = document.forms["myForm"]["phone"].value;
-        var nameregex = /^[a-zA-Z ]{2,30}$/;
-        var phoneregex= /^(+\d{1,2}\s)?(?\d{3})?[\s.-]\d{3}[\s.-]\d{4}$/;
-        var emailregex= /^[^\s@]+@[^\s@]+.[^\s@]+$/;
-        if (first_name == "") {
-          alert("First Name must be filled out");
-          return false;
-        }
-        if(!nameregex.test(first_name)){
+  script.
+    function validateForm() {
+      var first_name = document.forms["myForm"]["first_name"].value;
+      var last_name = document.forms["myForm"]["last_name"].value;
+      var email = document.forms["myForm"]["email"].value;
+      var phone = document.forms["myForm"]["phone"].value;
+      var nameregex = /^[a-zA-Z ]{2,30}$/;
+      var phoneregex= /^\d{10}$/;
+      var emailregex= /^[a-zA-Z 0-9\-_.]+@[a-zA-Z 0-9\-_.]+$/;
+      if (first_name == "") {
+        alert("First Name must be filled out");
+        return false;
+      }
+      if(!nameregex.test(first_name)){
         alert("Invalid first name");
-          return false;
-        }
-        if (last_name == "") {
-          alert("Last Name must be filled out");
-          return false;
-        }
-        if(!nameregex.test(last_name)){
+        return false;
+      }
+      if(!nameregex.test(last_name)){
         alert("Invalid last name");
           return false;
         }
-        if(!phoneregex.test(phone)){
+      if(!phoneregex.test(phone)){
         alert("Invalid phone number. Phone number must be 10 digits");
-          return false;
-        }
-        if(!emailregex.test(email)){
-        alert("Invalid email id");
-          return false;
-        }
+        return false;
       }
-   //
+      if(!emailregex.test(email)){
+        alert("Invalid email id");
+        return false;
+      }
+    }
   div(class='col-sm-4')
     a(class='button' href='/users') View Users
     form( name='myForm', onsubmit=' return validateForm()' action='/create', method='POST')

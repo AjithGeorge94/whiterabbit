@@ -69,7 +69,7 @@ exports.user_create = function(req, res)
 //----------------------------User Page-----------------------//
 /* This function is used to load user details of the requested user.*/
 exports.user_data_get = function(req, res) {
-    console.log('here')
+    console.log(req.params)
     User.findById(req.params.id)
     .then(function(user_details){
          res.status(200).json({
